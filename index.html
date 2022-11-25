@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        h1{
+            color: brown;
+            border: 1px dashed black;
+            text-align: center;
+        }
+        .bgcolor{
+            width:300px;
+            height: 80px;
+            background-color: black;
+        }
+        .btnstyle{
+            background-color: transparent;
+            width:180px;
+            height:50px;
+            border: 1px solid burlywood;
+            border-radius: 2px;
+        }
+    </style>
+</head>
+<body>
+    <h1><em>JavaScript Clock</em></h1>
+
+    <div class="bgcolor">
+        <p id="p1" style="color: white; font-size: 60px;"></p>
+        
+    </div><br>
+
+    <div style="margin:auto;">
+    <button onclick="start()" class="btnstyle">start</button>
+    <button onclick="stop()" class="btnstyle">stop</button>
+    </div>
+    
+    <script>
+        function colorchange()
+        {
+            date = new Date();
+            hour = date.getHours();
+            minutes = date.getMinutes();
+            seconds = date.getSeconds();
+            timing = date.toLocaleTimeString();
+
+            x = document.getElementById("p1");
+            x.innerHTML = timing;
+
+            if(seconds%2==0)
+            {
+                x.style.color = "green";
+            }
+            else
+            {
+                x.style.color = "red";
+            }
+        }colorchange();
+
+        function start()
+        {
+            clear = setInterval(colorchange,1000);//1k milli secons = 1sec
+        }
+
+        function stop()
+        {
+            clearInterval(clear);
+        }
+        
+    </script>
+
+</body>
+</html>
